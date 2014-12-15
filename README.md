@@ -203,26 +203,6 @@ outlookClient.me.folders.getFolder("Inbox").messages.getMessages().filter(filter
  };
 ```
 
-**Fetch all unread mails**
-```javascript
-var filterQuery = 'IsRead eq false';
-outlookClient.me.folders.getFolder("Inbox").messages.getMessages().filter(filterQuery).fetch()            
-.then(function (mails) {
-    // Get current page. Use getNextPage() to fetch next set of mails.
-    vm.mails = mails.currentPage;
-    $scope.$apply();                   
- });     
-```
-**Fetch all mails**
-```javascript
-outlookClient.me.folders.getFolder("Inbox").messages.getMessages().fetch()            
-.then(function (mails) {
-    // Get current page. Use getNextPage() to fetch next set of mails.
-    vm.mails = mails.currentPage;
-    $scope.$apply();                   
- }); 
-```
-
 **Step 8: Use O365 API to delete mail**
 Outlook client object can be used to delete mail, first get the mail which you want to delete using mail id and then call delete() on mail object to delete the particular mail. delete() permanently deletes the mail, to move the mail to Deleted Items, use move() function.
 ```javascript
