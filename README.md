@@ -163,22 +163,6 @@ angular.module("app365", ["ionic"])
     </ion-side-menu>
 </ion-side-menus>
 ```
-**Create Mail tab page to show important, unread and all mails under different tabs**
-```html
-<ion-view>
-    <ion-tabs class="tabs-positive tabs-icon-top">
-        <ion-tab title="Imp" icon="ion-star" ui-sref="app.mail.imp">
-            <ion-nav-view name="tab-imp-mail"></ion-nav-view>
-        </ion-tab>
-        <ion-tab title="Unread" icon="ion-ios7-email-outline" ui-sref="app.mail.unread">
-            <ion-nav-view name="tab-unread-mail"></ion-nav-view>
-        </ion-tab>
-        <ion-tab title="All" icon="ion-email" ui-sref="app.mail.all">
-            <ion-nav-view name="tab-all-mail"></ion-nav-view>
-        </ion-tab>
-    </ion-tabs>
-</ion-view>
-```
 
 ### Step 6: Acquire an access token and get the Outlook services client using AngularJS factory
 
