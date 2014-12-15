@@ -197,18 +197,42 @@ outlookClient.me.contacts.getContacts().fetch()
 ```
 
 ### Step 8: Use O365 API to add new contact
-Outlook client object can be used to delete mail, first get the mail which you want to delete using mail id and then call delete() on mail object to delete the particular mail. delete() permanently deletes the mail, to move the mail to Deleted Items, use move() function.
-```javascript
- outlookClient.me.folders.getFolder("Inbox").messages.getMessage(mail.id).fetch()
- .then(function (mail) {
-     // Delete the mail.
-     mail.delete()
-     .then((function (response) {
-          console.log('Mail deleted successfully.');
-      }), function (error) {                            
-          console.log('Fail to delete mail. Error = ' + error.message);                            
-  });
-});
+Outlook client object can be used to add, update anc delete contact.
+
+```javascript 
+// Outlook client object.
+var outlookClient;
+// To store contact info.
+$scope.newContact = {};
+
+$scope.addContact = function () {
+   outlookClient = app365api.outlookClientObj();           
+
+    // Contact object
+    var contact = new Microsoft.OutlookServices.Contact();
+
+    // First and last name
+    contact.givenName = $scope.newContact.firstname;
+    contact.surname = $scope.newContact.lastname;
+
+    // Mobile phone
+    contact.mobilePhone1 = $scope.newContact.phone;
+
+    // Email address
+    var emailAddress = new Microsoft.OutlookServices.EmailAddress();
+    emailAddress.address = $scope.newContact.email;
+    contact.emailAddresses.push(emailAddress);
+
+    // Add Contact
+    outlookClient.me.contacts.addContact(contact)
+    .then((function (response) {
+         console.log('Contact added successfully.');    
+     })
+     .bind(this), function (reason) {
+         // Log the error message when add contact fails.
+         console.log('Fail to add contact. Error = ' + reason.message);
+      });
+};
 ```
 
 ### Step 9: Run the app
