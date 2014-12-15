@@ -72,11 +72,10 @@ In index.html, add the following O365 references in the ``` <head> ``` element.
 
 **Folder and file detail:**
 - **auth** contains UI and code for signing-in and sign-out
-- **layout** contains UI to display app content and navigation like ion-pane, ion-side-menus, ion-nav-bar and code to bind the user name.
 - **app.js** contains ui routing to navigate to different pages
 - **service-o365.js** contains utility function to get access token, create Outlook services client object, signout and get user name. This is implemented as Angular factory so that these functions can be exposed as utility function across different pages.
 
-**Sample app.js defining ui routing**
+**app.js defining ui routing**
 ```javascript
 angular.module("app365", ["ionic"])
 
@@ -139,6 +138,7 @@ angular.module("app365", ["ionic"])
     $urlRouterProvider.otherwise('sign-in');
 })
 ```
+
 **App layout (menu, nav-bar)**
 ```html
 <ion-side-menus ng-controller="layoutCtrl as vm">
@@ -225,7 +225,7 @@ Outlook client object can be used to add, update anc delete contact.
     </ion-content>
 </ion-view>
 ```
-
+**Use following code to create new contact**
 ```javascript 
 // Outlook client object.
 var outlookClient;
