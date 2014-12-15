@@ -1,4 +1,4 @@
-## Cordova Mail Client App
+## Cordova Contact Client App
 
 This sample app shows step by step how to create a Cordova app using Ionic framework and O365 Outlook services from scratch.
 
@@ -9,16 +9,16 @@ In this tutorial, you'll these steps
 1. Create Blank Codrova using Visual Studio
 2. Add Ionic framework
 3. Add O365 services to app
-4. Set permissions to O365 mail tenet to grant appropiate access to app
+4. Set permissions to O365 contact tenet to grant appropiate access to app
 5. Create app folder structure, UI routing and layout using Ionic controls and navigation
 6. Acquire an access token and get the Outlook services client using AngularJS factory
-7. Use O365 API to fetch a.) Mails flagged as Important, b.) Unread mails and c.) All mails
-8. Use O365 API to delete mail
+7. Use O365 API to fetch contacts
+8. Use O365 API to add new contact
 9. Run the app!
 
 ![](https://github.com/abhikum/mobiledev/blob/gh-pages/O365AppImages/login.png)
-![](https://github.com/abhikum/mobiledev/blob/gh-pages/O365AppImages/Mail-list.png)
-![](https://github.com/abhikum/mobiledev/blob/gh-pages/O365AppImages/Mail-delete.png)
+![](https://github.com/abhikum/mobiledev/blob/gh-pages/O365AppImages/contact-list.png)
+![](https://github.com/abhikum/mobiledev/blob/gh-pages/O365AppImages/New-contact.png)
 
 ### Step 1: Create Blank Codrova using Visual Studio
 Create a new Cordova project in Visual Studio by choosing File --> New project --> JavaScript --> Apache Cordova Apps --> Blank App template. This sample uses JavaScript code, but you can also write your Cordova app in TypeScript.
