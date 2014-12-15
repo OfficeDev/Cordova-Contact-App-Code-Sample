@@ -184,26 +184,19 @@ authContext.getIdToken("https://outlook.office365.com/")
 ```javascript
 var outlookClient = new Microsoft.OutlookServices.Client('https://outlook.office365.com/api/v1.0', authtoken.getAccessTokenFn('https://outlook.office365.com'));
 ```
-### Step 7: Use O365 API to fetch a.) Mails flagged as Important, b.) Unread mails and c.) All mails
+### Step 7: Use O365 API to fetch contacts
 
-**Fetch all mails flagged as important**
+**Fetch all contacts**
 ```javascript
- function getImpMails() {          
- // Filter to fetch all important mails received after 2000-10-20
-var filterQuery = "Importance eq 'High' and DateTimeReceived gt 2000-10-20";
-outlookClient.me.folders.getFolder("Inbox").messages.getMessages().filter(filterQuery)
-.orderBy('Importance,DateTimeReceived desc').fetch()           
- .then(function (mails) {
-   // Get current page. Use getNextPage() to fetch next set of mails.
-   vm.mails = mails.currentPage;
-   $scope.$apply();                   
-  }, function (error) {
-     console.log("Error encountered while fetching mails. Error: " + error.message);
-    });            
- };
+outlookClient.me.contacts.getContacts().fetch()
+.then(function (contacts) {
+  // Get the current page. Use getNextPage() to fetch next set of contacts.
+  vm.contacts = contacts.currentPage;
+  $scope.$apply();                
+});
 ```
 
-**Step 8: Use O365 API to delete mail**
+### Step 8: Use O365 API to add new contact
 Outlook client object can be used to delete mail, first get the mail which you want to delete using mail id and then call delete() on mail object to delete the particular mail. delete() permanently deletes the mail, to move the mail to Deleted Items, use move() function.
 ```javascript
  outlookClient.me.folders.getFolder("Inbox").messages.getMessage(mail.id).fetch()
