@@ -199,6 +199,33 @@ outlookClient.me.contacts.getContacts().fetch()
 ### Step 8: Use O365 API to add new contact
 Outlook client object can be used to add, update anc delete contact.
 
+**Create the page to submit the data for creating new contact**
+```html
+<ion-view title=" New Contact" ng-controller="newContactCtrl as vm">
+    <ion-content class="has-header">
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="First Name" ng-model="newContact.firstname" />
+            </label> 
+            <label class="item item-input">
+                <input type="text" placeholder="Last Name" ng-model="newContact.lastname" />
+            </label> 
+            <label class="item item-input">
+                <input type="email" placeholder="Email" ng-model="newContact.email">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Phone" ng-model="newContact.phone" />
+            </label>            
+        </div>       
+        <div class="padding">
+            <button class="button button-block button-positive" ng-click="addContact()">
+                Add Contact
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
+```
+
 ```javascript 
 // Outlook client object.
 var outlookClient;
