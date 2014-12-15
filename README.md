@@ -51,7 +51,7 @@ Follow these steps to add and configure Office 365 APIs by using the Services Ma
 ![](https://github.com/abhikum/mobiledev/blob/gh-pages/O365AppImages/ServiceManager.png)
 
 ### Step 4: Set permissions to O365 contact tenet to grant appropiate access to app
-Select Contact and click on Permissions... link on right pane and then select read and write to user's mail as app will need to perform read and delete mail operation. Similarly if you want your app to send mail then select mail as a user option.
+Select Contact and click on Permissions... link on right pane and then select 'have full access to users' contact'. Similarly if you want to give only read access to app, select 'Read users' contact'.
 
 ![](https://github.com/abhikum/mobiledev/blob/gh-pages/O365AppImages/Contact-permission.png)
 
