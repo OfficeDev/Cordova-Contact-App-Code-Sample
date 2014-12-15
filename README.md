@@ -66,9 +66,9 @@ In index.html, add the following O365 references in the ``` <head> ``` element.
 ```
 **Step 5: Create app folder structure, UI routing and layout using Ionic controls and navigation**
 
-1. Create app folder under project root node. app folder will contain files specific to app. Each UI component which does fetching and binding the data to UI will have corresponding controller much like UI and code behind pattern. For example mail-list.html will show list control to display user mails and mail-list-ctrl.js will contain code to fetch users mail using O365 API.
+1. Create app folder under project root node. app folder will contain files specific to app. Each UI component which does fetching and binding the data to UI will have corresponding controller much like UI and code behind pattern. For example contact-list.html will show list control to display user contacts and contact-list-ctrl.js will contain code to fetch users contact using O365 API.
 
-![](https://github.com/abhikum/mobiledev/blob/gh-pages/O365AppImages/Mail-app-folder.png)
+![](https://github.com/abhikum/mobiledev/blob/gh-pages/O365AppImages/Contact-app-folders.PNG)
 
 **Folder and file detail:**
 - **auth** contains UI and code for signing-in and sign-out
@@ -78,7 +78,21 @@ In index.html, add the following O365 references in the ``` <head> ``` element.
 
 **Sample app.js defining ui routing**
 ```javascript
-// Layout page
+angular.module("app365", ["ionic"])
+
+.run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
+        if (window.StatusBar) {
+            StatusBar.styleDefault();
+        }
+    });
+})
+
+.config(function ($stateProvider, $urlRouterProvider) {
+
+    $stateProvider
+
+    // Layout page
     .state('app', {
         abstract: true,
         url: "/app",
@@ -89,40 +103,41 @@ In index.html, add the following O365 references in the ``` <head> ``` element.
      .state('sign-in', {
          url: "/sign-in",
          templateUrl: "app/auth/sign-in.html"
-     })   
+     })
 
-    // Mail list page
-    .state('app.mail', {
-        url: "/mail",
+    // Sign-out page
+    .state('app.sign-out', {
+        url: "/sign-out",
         views: {
             'mainContent': {
-                templateUrl: "app/mail/mail-tabs.html"
+                templateUrl: "app/auth/sign-out.html"
+            }
+        }
+    })    
+
+    // Add new contact page
+    .state('app.newContact', {
+        url: "/newContact",
+        views: {
+            'mainContent': {
+                templateUrl: "app/contact/add-contact.html"
             }
         }
     })
 
-    // Mail list containing mails flagged as important
-    .state('app.mail.imp', {
-        url: "/imp/id:important",
-        views: {
-            "tab-imp-mail": {
-                templateUrl: "app/mail/mail-list.html"
-            }
-        }
-    })
-
-    // Mail detail page
-    .state('app.mail-detail', {
-        url: "/mail/:id",
+    // Contact list page
+    .state('app.contact', {
+        url: "/contact",
         views: {
             'mainContent': {
-                templateUrl: "app/mail/mail-detail.html"
+                templateUrl: "app/contact/contact-list.html"
             }
         }
-    });   
+    });    
 
     // Navigate to sign-in page when app starts.
     $urlRouterProvider.otherwise('sign-in');
+})
 ```
 **App layout (menu, nav-bar)**
 ```html
