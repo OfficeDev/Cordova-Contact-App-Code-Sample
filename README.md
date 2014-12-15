@@ -197,7 +197,7 @@ outlookClient.me.contacts.getContacts().fetch()
 ```
 
 ### Step 8: Use O365 API to add new contact
-Outlook client object can be used to add, update anc delete contact.
+Outlook client object can be used to add, update and delete contact.
 
 **Create the page to submit the data for creating new contact**
 ```html
